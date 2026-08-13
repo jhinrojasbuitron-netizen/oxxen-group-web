@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cotizacion {
+  id         Int      @id @default(autoincrement())
+  nombre     String
+  empresa    String?
+  telefono   String
+  email      String
+  servicios  String   @db.Text
+  mensaje    String?  @db.Text
+  atendido   Boolean  @default(false)
+  creadoEn   DateTime @default(now())
+}
